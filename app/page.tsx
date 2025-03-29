@@ -3,11 +3,14 @@ import { BlogPosts } from 'app/components/posts'
 export default function Page() {
   return (
     <section>
+      <div className="flex center gap-4 mb-8">
       <h1 className="mb-8 text-3xl font-semibold tracking-tighter">
         Giuseppe Tardi
       </h1>
+      <img src="/images/user.jpg" alt="User Icon" className="w-14 h-14 rounded-full cursor-pointer" />     
+      </div>
       <h2 className='mb-8 text-2xl font-italic tracking-tighter'>
-        Master degree in Computer science
+        Master's degree in Computer Science
       </h2>
       <p className="mb-4">
         {`Benvenuti nel mio personale sito web.
