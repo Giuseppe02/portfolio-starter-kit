@@ -1,0 +1,20 @@
+# Dockerfile.dev
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Installa solo le dipendenze
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
+RUN \
+  if [ -f yarn.lock ]; then yarn install; \
+  elif [ -f package-lock.json ]; then npm install; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm install; \
+  else echo "Lockfile non trovato." && exit 1; \
+  fi
+
+# Copia il resto dei file
+COPY . .
+
+EXPOSE 3000
+
+CMD ["yarn", "dev"]
